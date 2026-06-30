@@ -1,0 +1,74 @@
+class Node{
+  int data;
+  Node link;
+
+Node(int data){
+  this.data=data;
+  this.link=null;
+}
+}
+ class Stack{
+  Node top;
+  int size;
+  int length;
+
+  Stack(int size){
+    this.size=size;
+    this.top=null;
+    this.length=0;
+  }
+ 
+  public void push(Node newNode){
+  if(length==size){
+    System.out.println("over flow");
+    return;
+  }
+  if(top==null){
+    top=newNode;
+    ++length;
+  }else{
+    Node cp=top;
+    top=newNode;
+newNode.link=cp;
+++length;
+  }
+}
+
+public Node pop(){
+  if(top==null){
+    System.out.println("under flow");
+    return null;
+  }
+    Node cp=top;
+    top=cp.link;
+    cp.link=null;
+    --length;
+    return cp;
+  }
+
+public void display(){
+  if(top==null){
+    System.out.println("Empty stack");
+  }else{
+    Node cp=top;
+    while(cp!=null){
+      System.out.print(cp.data+"-->");
+      cp=cp.link;
+    }
+        System.out.println("null");
+      }
+    }
+  }
+
+ 
+public class main{
+public static void main(String[]args){
+Stack s=new Stack(5);
+s.push(new Node(2));
+s.push(new Node(4));
+s.push(new Node(5));
+s.pop();
+s.display();
+}
+}
+
